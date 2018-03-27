@@ -15,7 +15,10 @@ axios.get('https://www.uscreditcardguide.com/wp-json/wp/v2/posts/')
                item["id"] = rep.data[index].id;
                item["title"] = rep.data[index].title.rendered;
                item["date"] = rep.data[index].date.substring(0, 10);
-               item["summary"] = rep.data[index].excerpt.rendered;
+               var summary = rep.data[index].excerpt.rendered;
+               summary = summary.replace(/<p>/g,"");
+               summary = summary.replace(/<\/p>/g,"");
+               item["summary"] = summary
                item["url"] = rep.data[index].guid.rendered;
                article_list.push(item);
            }
