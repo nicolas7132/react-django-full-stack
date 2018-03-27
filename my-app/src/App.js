@@ -1,21 +1,30 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
-  render() {
+class Article extends Component {
+    handleClick(url, e) {
+        e.preventDefault();
+        window.location.href = url;
+    }
+
+    render() {
+        return (<div className="article" onClick={this.handleClick.bind(this, this.props.item.url)}>
+    <h4>{this.props.item.title}</h4>
+        <p>{this.props.item.summary}</p>
+        <span className="time">{this.props.item.date}</span>
+        </div>);
+    }
+}
+
+function App(props) {
+    const items = props.items;
+    const listItems = items.map((item) => <Article key={item.id} item={item}/>);
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+        <div>
+        {listItems}
+        </div>
+)
 }
 
 export default App;
