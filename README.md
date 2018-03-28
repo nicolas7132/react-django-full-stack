@@ -11,7 +11,6 @@ copy "my-app/build" to "my-server/build"
 ### how to complie django app
 ```
 cd my-server
-python manage.py migrate
 python manage.py makemigrations myapp
 python manage.py migrate
 python manage.py runserver
