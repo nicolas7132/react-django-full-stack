@@ -6,7 +6,7 @@ class Article extends Component {
     handleClick(url, e) {
         e.preventDefault();
 
-        axios.get('/myapp/click?url=' + escape(url))
+        axios.get('/myapp/click?url=' + encodeURIComponent(url))
             .then(function (rep) {
                 console.log(rep);
             });
